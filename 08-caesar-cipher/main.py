@@ -1,12 +1,25 @@
-# def life_in_weeks(age):
-#     left = 4680 - (age * 52)
-#     print(f"You have {left} weeks left.")
-#
-#
-# life_in_weeks(44)
+from art import logo
 
-def calculate_love_score(name1, name2):
-# your code here
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-# Call your function with hard coded values
-calculate_love_score("Kanye West", "Kim Kardashian")
+print(logo)
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+usr_text = input("Type your message:\n").lower()
+usr_shift = int(input("Type the shift number:\n"))
+
+
+def encrypt(text, shift):
+    print(text)
+    alphabet.index(shift)
+
+
+encrypt(usr_text, usr_shift)
+
+# TODO - 1: Create a function called 'encrypt()' that takes 'text' and 'shift' a 2 inputs
+# TODO - 2: Inside the 'encrypt()' function, shift each letter of the text forward in the alphabet by the shift amount
+#  and print the encrypted text.
+# TODO - 3: Call the 'encrypt()' function and pass in the user inputs.
+# TODO - 4: What happens when you shift by 9? Can you fix the code?
