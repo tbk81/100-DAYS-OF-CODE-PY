@@ -18,7 +18,7 @@ def caesar(direction, usr_text, usr_shift):
 
 done = False
 while not done:
-    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt, 'e' to exit:\n")
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
     usr_text = input("Type your message:\n").lower()
     usr_shift = int(input("Type the shift number:\n"))
 
