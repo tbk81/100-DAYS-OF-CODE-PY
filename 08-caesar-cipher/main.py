@@ -2,26 +2,29 @@ from art import logo
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r','s', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-# print(logo)
+print(logo)
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt, 'e' to exit:\n")
-usr_text = input("Type your message:\n").lower()
-usr_shift = int(input("Type the shift number:\n"))
-
-def caesar(dir=direction, text=usr_text, shift=usr_shift):
+def caesar(direction, usr_text, usr_shift):
     message = ""
+    if direction == "decode":
+        usr_shift *= -1
 
-    if dir == "encode":
-        print(f"{text}")
-        for c in text:
-            message += alphabet[(alphabet.index(c) + shift) % (len(alphabet))]
-        print(f"Here is your encoded text: {message}")
-    elif dir == "decode":
-        print(f"{text}")
-        for c in text:
-            message += alphabet[(alphabet.index(c) - shift) % (len(alphabet))]
-        print(f"Here is your decoded text: {message}")
-    else:
-        print("Please choose encode or decode")
+    for c in usr_text:
+        if c not in alphabet:
+            message += c
+        else:
+            message += alphabet[(alphabet.index(c) + usr_shift) % (len(alphabet))]
+    print(f"Here is your {direction}d text: {message}")
 
-caesar(direction, usr_text, usr_shift)
+done = False
+while not done:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt, 'e' to exit:\n")
+    usr_text = input("Type your message:\n").lower()
+    usr_shift = int(input("Type the shift number:\n"))
+
+    caesar(direction, usr_text, usr_shift)
+ 
+    restart = input("Type 'yes' to continue or 'no' to exit\n").lower()
+    if restart == "no":
+        done = True
+        print("Goodbye")
