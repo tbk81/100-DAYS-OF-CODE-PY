@@ -1,29 +1,22 @@
-student_scores = {
-    'Harry': 88,
-    'Ron': 78,
-    'Hermione': 95,
-    'Draco': 75,
-    'Neville': 60
-}
+from art import logo
+print(logo)
 
-student_grades = {}
+def winner(dict):
+    high_bid = {"name": 0}
+    for key in dict:
+        if dict[key] > high_bid["name"]:
+            high_bid["name"] = dict[key]
+    print(high_bid)
 
-for key in student_scores:
-    if student_scores[key] > 90:
-        student_grades[key] = "Outstanding"
-    elif 80 < student_scores[key] < 91:
-        student_grades[key] = "Exceeds Expectations"
-    elif 70 < student_scores[key] < 81:
-        student_grades[key] = "Acceptable"
-    else:
-        student_grades[key] = "Fail"
-# for key in student_scores:
-#     student_grades[key] = student_scores[key]/100
-print(student_grades)
+auction_list = {}
+auction_done = False
+while not auction_done:
+    name = input("What is your name?: ")
+    bid = int(input("What is your bid?: "))
+    auction_list[name] = bid
+    bidders = input("Other bidders, 'yes' or 'no'?: ").lower()
+    if bidders == "no":
+        auction_done = True
 
-'''
- - Scores 91 - 100: Grade = "Outstanding" 
-- Scores 81 - 90: Grade = "Exceeds Expectations" 
-- Scores 71 - 80: Grade = "Acceptable"
-- Scores 70 or lower: Grade = "Fail"
-'''
+print(auction_list)
+winner(auction_list)
