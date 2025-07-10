@@ -10,10 +10,15 @@ def compare(answer):
         return True
     else:
         return False
+    # this will get you the same functionality
+    # if a_followers > b_followers:
+    #     return usr_guess == "a"
+    # else:
+    #     return usr_guess == "b"
 
 
 def person_gen():
-    return data[random.randint(0, len(data) - 1)]
+    return random.choice(data)
 
 
 personA = person_gen()
@@ -28,9 +33,10 @@ while game_running:
     print(logo)
     print(f"Compare A: {personA['name']}, a {personA['description']} from {personA['country']}")
     print(vs)
-    print(f"Compare B: {personB['name']}, a {personB['description']} from {personB['country']}")
+    print(f"Against B: {personB['name']}, a {personB['description']} from {personB['country']}")
     # print(f"A = {personA['follower_count']}\nB = {personB['follower_count']}")
     user_choice = input("Who has more followers? Type 'A' or 'B': ").lower()
+    # print("\n"*20)
 
     if compare(user_choice):
         current_score += 1
