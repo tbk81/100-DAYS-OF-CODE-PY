@@ -1,6 +1,3 @@
-from distutils.command.check import check
-
-
 class QuizBrain:
 
     def __init__(self, q_list):
