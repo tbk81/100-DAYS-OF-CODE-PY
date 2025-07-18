@@ -1,14 +1,14 @@
-import colorgram
+# import colorgram
 
 # Creates a list of tuples for the project
-def color_extraction():
-    extract = colorgram.extract("hirst_colors.jpg", 42)
-    li = []
-    for color in extract:
-        tup = [color.rgb.r, color.rgb.g, color.rgb.b]
-        tup = tuple(tup)
-        color_li.append(tup)
-    return li
+# def color_extraction():
+#     extract = colorgram.extract("hirst_colors.jpg", 42)
+#     li = []
+#     for color in extract:
+#         tup = [color.rgb.r, color.rgb.g, color.rgb.b]
+#         tup = tuple(tup)
+#         li.append(tup)
+#     return li
 
 
 # color_li = color_extraction()

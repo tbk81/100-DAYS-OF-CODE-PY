@@ -13,6 +13,7 @@ screen = t.Screen()
 hirst = t.Turtle()
 t.colormode(255)
 t.speed(0)
+t.hideturtle()
 
 
 def make_dot():
@@ -24,7 +25,6 @@ def make_row(p1, p2):
     for _ in range(10):
         t.penup()
         t.setposition(p1, p2)
-        t.pendown()
         make_dot()
         p1 += 50
 
@@ -32,15 +32,9 @@ def make_row(p1, p2):
 pos1 = -300
 pos2 = -300
 
-make_row(pos1, pos2)
-make_row(pos1, -250)
-make_row(pos1, -200)
-make_row(pos1, -150)
-make_row(pos1, -100)
-make_row(pos1, -50)
-make_row(pos1, 0)
-make_row(pos1, 50)
-make_row(pos1, 100)
-make_row(pos1, 150)
+for _ in range(10):
+    make_row(pos1, pos2)
+    pos2 += 50
+
 
 screen.exitonclick()
