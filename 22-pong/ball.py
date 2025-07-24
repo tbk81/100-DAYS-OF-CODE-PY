@@ -8,7 +8,6 @@ class Ball(Turtle):
         self.color("white")
         self.penup()
         self.goto(0, 0)
-        self.shapesize()
         self.x_move = 10
         self.y_move = 10
 
@@ -23,3 +22,9 @@ class Ball(Turtle):
     def bounce_x(self):
         self.x_move *= -1
 
+    def pos_reset(self):
+        self.hideturtle()
+        self.goto(0, 0)
+        self.showturtle()
+        self.y_move *= -1
+        self.x_move *= -1
