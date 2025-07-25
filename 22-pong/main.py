@@ -26,10 +26,9 @@ screen.onkey(l_paddle.down, "Down")
 screen.onkey(r_paddle.up, "w")
 screen.onkey(r_paddle.down, "s")
 
-pace = 0.1
 game_is_on = True
 while game_is_on:
-    time.sleep(pace)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
     if ball.ycor() > 280 or ball.ycor() < -280:
@@ -40,14 +39,8 @@ while game_is_on:
     elif ball.xcor() > 370:
         ball.pos_reset()
         scoreboard.l_point()
-        pace /= .1
     elif ball.xcor() < -385:
         ball.pos_reset()
         scoreboard.r_point()
-
-
-# TODO 6. Detect collision with paddle
-# TODO 7. Detect when paddle misses
-# TODO 8. Keep score
 
 screen.exitonclick()
