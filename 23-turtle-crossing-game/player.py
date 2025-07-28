@@ -18,14 +18,14 @@ class Player(Turtle):
         new_y_pos = self.ycor() + MOVE_DISTANCE
         self.goto(self.xcor(), new_y_pos)
 
-    def move_down(self):
-        new_y_pos = self.ycor() - MOVE_DISTANCE
-        self.goto(self.xcor(), new_y_pos)
+    # def move_down(self):
+    #     new_y_pos = self.ycor() - MOVE_DISTANCE
+    #     self.goto(self.xcor(), new_y_pos)
 
-    def move_left(self):
-        new_x_pos = self.xcor() - MOVE_DISTANCE
-        self.goto(new_x_pos, self.ycor())
+    # def move_left(self):
+    #     new_x_pos = self.xcor() - MOVE_DISTANCE
+    #     self.goto(new_x_pos, self.ycor())
 
-    def move_right(self):
-        new_x_pos = self.xcor() + MOVE_DISTANCE
-        self.goto(new_x_pos, self.ycor())
+    # def move_right(self):
+    #     new_x_pos = self.xcor() + MOVE_DISTANCE
+    #     self.goto(new_x_pos, self.ycor())

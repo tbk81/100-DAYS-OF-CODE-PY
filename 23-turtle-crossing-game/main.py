@@ -13,9 +13,9 @@ car_manager = CarManager()
 
 screen.listen()
 screen.onkey(player.move_up, "Up")
-screen.onkey(player.move_down, "Down")
-screen.onkey(player.move_left, "Left")
-screen.onkey(player.move_right, "Right")
+# screen.onkey(player.move_down, "Down")
+# screen.onkey(player.move_left, "Left")
+# screen.onkey(player.move_right, "Right")
 
 game_is_on = True
 while game_is_on:
