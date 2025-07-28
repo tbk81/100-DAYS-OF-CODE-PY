@@ -36,6 +36,13 @@ class Snake:
     def extend(self):
         self.add_seg(self.seg_li[-1].position())
 
+    def reset_snake(self):
+        for seg in self.seg_li:
+            seg.goto(1000, 1000)
+        self.seg_li.clear()
+        self.create_snake()
+        self.head = self.seg_li[0]
+
     def up(self):
         if self.head.heading() != SOUTH:
             self.head.setheading(NORTH)
