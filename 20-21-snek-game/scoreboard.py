@@ -10,7 +10,7 @@ class Scoreboard(Turtle):
         self.penup()
         self.hideturtle()
         self.color("white")
-        self.high_score = 0
+        self.high_score = self.get_high_score()
         self.score = 0
         self.goto(x=0, y=270)
         self.update_scoreboard()
@@ -28,6 +28,15 @@ class Scoreboard(Turtle):
             self.high_score = self.score
         self.score = 0
         self.update_scoreboard()
+
+    def get_high_score(self):
+        with open("data.txt") as data:
+            self.high_score = int(data.read())
+            return self.high_score
+
+    def save_high_score(self):
+        with open("data.txt", mode="w") as data:
+            data.write(f"self.high_score")
 
     # def game_over(self):
     #     self.goto(0, 0)

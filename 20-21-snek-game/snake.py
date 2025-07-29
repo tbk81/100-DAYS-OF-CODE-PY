@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-START_X_POS = [(0,0), (-20, 0), (-40, 0)]
+START_X_POS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DIST = 20
 NORTH = 90
 WEST = 180
