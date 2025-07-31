@@ -14,7 +14,7 @@
 
 import pandas
 
-# data = pandas.read_csv("weather_data.csv")
+data = pandas.read_csv("weather_data.csv")
 # print(data)
 # print(data["temp"])
 
@@ -33,19 +33,20 @@ import pandas
 # print(data[data.day == "Monday"])
 # print(data[data.temp == data.temp.max()])
 #
-# monday = data[data.day == "Monday"]
-# print(monday.condition)
-# print(monday.temp)
+monday = data[data.day == "Monday"]
+print(monday.condition)
+print(monday.temp)
 #
-# far = monday.temp * (9/5) + 32
-# print(far)
-# print(type(far))
+far = monday.temp * (9/5) + 32
+print(far)
+print(type(far))
 #
-# monday_temp = monday.temp[0]
-# far_2 = monday_temp * (9/5) + 32
-# print(far_2)
-# print(type(far_2))
-
+monday_temp = monday.temp[0]
+far_2 = monday_temp * (9/5) + 32
+print(far_2)
+print(type(far_2))
+num = (monday.temp[0])
+print(num)
 
 # Create a new dataframe
 # data_dict = {
@@ -58,16 +59,16 @@ import pandas
 # data.to_csv("new_data_file")
 
 # Using the squirrel data make a dataframe with the number of squirrels by number
-sq_data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
-colors = sq_data["Primary Fur Color"].tolist()
+# sq_data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
+# colors = sq_data["Primary Fur Color"].tolist()
 # print(colors)
-sq_dict = {
-    "Fur Color": ["Gray", "Cinnamon", "Black"],
-    "Count": [colors.count("Gray"), colors.count("Cinnamon"),  colors.count("Black")]
-}
+# sq_dict = {
+#     "Fur Color": ["Gray", "Cinnamon", "Black"],
+#     "Count": [colors.count("Gray"), colors.count("Cinnamon"),  colors.count("Black")]
+# }
 
 # print(sq_dict)
 
-df = pandas.DataFrame(sq_dict)
-df.to_csv("squirrel color count")
+# df = pandas.DataFrame(sq_dict)
+# df.to_csv("squirrel color count")
 

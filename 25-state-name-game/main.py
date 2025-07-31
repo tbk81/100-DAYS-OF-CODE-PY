@@ -1,36 +1,31 @@
-import turtle
+import turtle as t
 import pandas
+from map_manager import MapManager
 
-screen = turtle.Screen()
+# Screen Set up
+screen = t.Screen()
 screen.title("U.S. States Game")
 image = "blank_states_img.gif"
 screen.addshape(image)
+t.shape(image)
 
-turtle.shape(image)
 data = pandas.read_csv("50_states.csv")
+all_states = data.state.tolist()
+remaining_states = []
+map_manager = MapManager()
 
-answer_state = screen.textinput(title="Guess a state", prompt="What's a state's name?").capitalize()
-# print(data.state)
-# if "Alaska" in data.state.values:
-#     print("yes")
-print(answer_state)
-show_state = turtle.Turtle()
-print(screen.screensize())
-if answer_state in data.state.values:
-    print("Correct")
-    guess = data[data.state == answer_state]
-    print(guess.x)
-    print(type(guess.x))
-    x = guess.x.astype(int)
-    print(x)
-    print(guess.y)
-    state_coords = (x, guess.y)
-    # print(type(state_coords))
-    print(state_coords)
-    # show_state.goto(x=guess.x, y=guess.y)
+guessed_states = []
+while len(guessed_states) < 50:
+    answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct",
+                                    prompt="What's a state's name?").title()
+    if answer_state == "Exit":
+        break
 
-# turtle.mainloop()
-screen.exitonclick()
+    if answer_state in data.state.values and answer_state not in guessed_states:
+        guessed_states.append(answer_state)
+        guess = data[data.state == answer_state]
+        state_coords = (guess.x.item(), guess.y.item())
+        map_manager.show_state(answer_state, state_coords)
 
 
 
@@ -39,9 +34,9 @@ screen.exitonclick()
 
 
 # TODO.1 - Convert the guess to title case - DONE
-# TODO.2 - Check if the guess is amoung the states - D
-# TODO.3 - Write the correct guesses on the map
-# TODO.4 - Use a loop to let the user keep guessing
-# TODO.5 - Record the correct guesses in a list
-# TODO.6 - Keep track of the score
+# TODO.2 - Check if the guess is among the states - DONE
+# TODO.3 - Write the correct guesses on the map - DONE
+# TODO.4 - Use a loop to let the user keep guessing - DONE
+# TODO.5 - Record the correct guesses in a list - DONE
+# TODO.6 - Keep track of the score - DONE
 

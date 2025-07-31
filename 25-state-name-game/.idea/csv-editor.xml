@@ -3,21 +3,14 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv">
+        <entry key="/50_states.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="$USER_HOME$/Downloads/day-25-us-states-game-start/50_states.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/weather_data.csv">
+        <entry key="/data files/weather_data.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
