@@ -11,18 +11,25 @@ t.shape(image)
 
 data = pandas.read_csv("50_states.csv")
 all_states = data.state.tolist()
-remaining_states = []
-map_manager = MapManager()
-
+remaining_states = all_states
 guessed_states = []
+map_manager = MapManager()
 while len(guessed_states) < 50:
     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct",
                                     prompt="What's a state's name?").title()
     if answer_state == "Exit":
+        # Alternative way
+        # missing_states = []
+        # for state in all_states:
+        #     if state not in guessed_states:
+        #         missing_states.append(state)
+        report = pandas.DataFrame(remaining_states)
+        report.to_csv("report.csv")
         break
 
     if answer_state in data.state.values and answer_state not in guessed_states:
         guessed_states.append(answer_state)
+        remaining_states.remove(answer_state)
         guess = data[data.state == answer_state]
         state_coords = (guess.x.item(), guess.y.item())
         map_manager.show_state(answer_state, state_coords)
