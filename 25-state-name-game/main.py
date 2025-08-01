@@ -23,6 +23,9 @@ while len(guessed_states) < 50:
         # for state in all_states:
         #     if state not in guessed_states:
         #         missing_states.append(state)
+        # or use list comprehension
+        # missing_states = [state for state in all_states if state not in guessed_states]
+
         report = pandas.DataFrame(remaining_states)
         report.to_csv("report.csv")
         break
