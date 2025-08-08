@@ -1,30 +1,28 @@
 from tkinter import *
 from tkinter import messagebox
-import random
+from random import choice, randint, shuffle
+
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
-# noinspection DuplicatedCode
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-           'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-           'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+def gen_pw():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+               'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+               'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-# pw = []
-# for n in range(2, 10):
-#     pw.append(random.choice(letters))
+    chars = [choice(letters) for _ in range(randint(8, 10))]
+    nums = [choice(numbers) for _ in range(randint(2, 4))]
+    sym = [choice(symbols) for _ in range(randint(2, 4))]
+    pw = chars + nums + sym
+    shuffle(pw)
+    pw = "".join(pw)
+    password_entry.insert(0, pw)
 
-pw = [random.choice(letters) for n in range(2, 10)]
-# pw.append([random.choice(numbers) for n in range(2, 4)])
-# pw = [random.choice(symbols) for n in range(2, 4)]
 
-random.shuffle(pw)
-pw = "".join(pw)
-
-print(pw)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def save():
-
     website = website_entry.get()
     email = email_un_entry.get()
     password = password_entry.get()
@@ -39,6 +37,7 @@ def save():
                 f.write(f"{website} | {email} | {password}\n")
             website_entry.delete(0, END)
             password_entry.delete(0, END)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -61,24 +60,23 @@ password_label = Label(text="Password:", fg="black", bg="white")
 password_label.grid(column=0, row=3, sticky="E")
 
 # Entries
-website_entry = Entry(width=34, bg="white", highlightthickness=0.1)
+website_entry = Entry(width=34, bg="white", fg="black", highlightthickness=0.1)
 website_entry.grid(column=1, row=1, rowspan=1, pady=2, padx=2)
 website_entry.focus()
 
-email_un_entry = Entry(width=34, bg="white", highlightthickness=0.1)
+email_un_entry = Entry(width=34, bg="white", fg="black", highlightthickness=0.1)
 email_un_entry.grid(column=1, row=2, rowspan=1, pady=2, padx=2)
 email_un_entry.insert(0, "tbk@gmail.com")
 
-password_entry = Entry(width=17, bg="white", highlightthickness=0.1)
+password_entry = Entry(width=17, bg="white", fg="black", highlightthickness=0.1)
 password_entry.grid(column=1, row=3, pady=2, padx=(5, 0), sticky="W")
 
 # Buttons
-generate_pw_button = Button(text="Generate Password", highlightbackground="white")
-generate_pw_button.grid(column=1, row=3,sticky="E")
+generate_pw_button = Button(text="Generate Password", highlightbackground="white", command=gen_pw)
+generate_pw_button.grid(column=1, row=3, sticky="E")
 
 add_button = Button(text="Add", width=32, highlightbackground="white", command=save)
 add_button.grid(column=1, row=4, rowspan=1)
-
 
 window.focus_force()
 window.mainloop()
