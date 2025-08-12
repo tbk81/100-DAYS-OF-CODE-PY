@@ -53,6 +53,22 @@ def save():
             password_entry.delete(0, END)
 
 
+# ---------------------------- Search ------------------------------- #
+def search():
+    website = website_entry.get()
+    try:
+        with open("data.json", "r") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showerror(title="Error", message="File not found")
+    else:
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"{email}\n{password}")
+        else:
+            messagebox.showerror(title=website, message=f"{website} not found")
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -74,8 +90,8 @@ password_label = Label(text="Password:", fg="black", bg="white")
 password_label.grid(column=0, row=3, sticky="E")
 
 # Entries
-website_entry = Entry(width=34, bg="white", fg="black", highlightthickness=0.1)
-website_entry.grid(column=1, row=1, rowspan=1, pady=2, padx=2)
+website_entry = Entry(width=26, bg="white", fg="black", highlightthickness=0.1)
+website_entry.grid(column=1, row=1, pady=2, padx=2, sticky="W")
 website_entry.focus()
 
 email_un_entry = Entry(width=34, bg="white", fg="black", highlightthickness=0.1)
@@ -91,6 +107,10 @@ generate_pw_button.grid(column=1, row=3, sticky="E")
 
 add_button = Button(text="Add", width=32, highlightbackground="white", command=save)
 add_button.grid(column=1, row=4, rowspan=1)
+
+search_button = Button(text="Search", highlightbackground="white", command=search)
+search_button.grid(column=1, row=1, sticky="E")
+
 
 window.focus_force()
 window.mainloop()
