@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
-
+import json
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def gen_pw():
@@ -19,7 +19,6 @@ def gen_pw():
     pw = "".join(pw)
     password_entry.insert(0, pw)
 
-
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def save():
@@ -27,14 +26,29 @@ def save():
     email = email_un_entry.get()
     password = password_entry.get()
 
+    new_data = {website: {
+        "email": email,
+        "password": password
+        }
+    }
+
     if len(website) == 0 or len(password) == 0:
         messagebox.showerror(title="Error", message="Please fill all the fields")
     else:
-        accept = messagebox.askokcancel(website, f"Email: {email}\nPassword{password}\n"
-                                                 f"Do you want to save this password?")
-        if accept:
-            with open("data.txt", "a") as f:
-                f.write(f"{website} | {email} | {password}\n")
+        try:
+            with open("data.json", "r") as data_file:
+                # Reading old data
+                data = json.load(data_file)
+        except FileNotFoundError:
+            with open("data.json", "w") as data_file:
+                json.dump(new_data, data_file, indent=4)
+        else:
+            # Updating old data with new data
+            data.update(new_data)
+
+            with open("data.json", "w") as data_file:
+                json.dump(data, data_file, indent=4)
+        finally:
             website_entry.delete(0, END)
             password_entry.delete(0, END)
 

@@ -29,8 +29,3 @@ if height > 3:
 
 bmi = weight / height ** 2
 print(bmi)
-
-
-try:
-    pass
-except In:
