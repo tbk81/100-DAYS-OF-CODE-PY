@@ -14,12 +14,13 @@ print(to_learn)
 # ---------------------------- Next port button ------------------------------- #
 
 def next_card():
-    global current_card
+    global current_card, flip_timer
+    window.after_cancel(flip_timer)  # Stops timer  after clicking button
     current_card = random.choice(to_learn)
     canvas.itemconfig(title, text="Port Number", fill="black")
     canvas.itemconfig(port, text=current_card["port_num"], fill="black")
     canvas.itemconfig(card_bg, image=front_card_img)
-    window.after(3000, func=flip_card)
+    flip_timer = window.after(3000, func=flip_card)  # New timer after the card has been flipped
 
 
 def flip_card():
@@ -36,7 +37,7 @@ window = Tk()
 window.title("Flash Hole")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
-window.after(3000, func=flip_card)
+flip_timer = window.after(3000, func=flip_card)
 
 canvas = Canvas(width=850, height=576, bg=BACKGROUND_COLOR, highlightthickness=0)
 front_card_img = PhotoImage(file="images/card_front.png")
