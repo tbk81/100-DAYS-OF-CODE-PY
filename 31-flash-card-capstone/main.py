@@ -16,6 +16,7 @@ except FileNotFoundError:
 else:
     to_learn = df.to_dict(orient="records")
 
+
 # ---------------------------- Button functions ------------------------------- #
 
 def next_card():
@@ -33,12 +34,14 @@ def flip_card():
     canvas.itemconfig(port, text=current_card["service"], fill="white")
     canvas.itemconfig(card_bg, image=back_card_img)
 
+
 def card_known():
     to_learn.remove(current_card)
     data = pandas.DataFrame(to_learn)
     data.to_csv("data/words_to_learn.csv", index=False)
 
     next_card()
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -52,7 +55,7 @@ canvas = Canvas(width=850, height=576, bg=BACKGROUND_COLOR, highlightthickness=0
 front_card_img = PhotoImage(file="images/card_front.png")
 back_card_img = PhotoImage(file="images/card_back.png")
 card_bg = canvas.create_image(425, 288, image=front_card_img)
-canvas.grid(column=0, row =0, columnspan=2)
+canvas.grid(column=0, row=0, columnspan=2)
 
 # Buttons
 wrong_image = PhotoImage(file="images/wrong.png")
@@ -68,7 +71,6 @@ correct_button.grid(column=1, row=1)
 # Canvas text
 title = canvas.create_text(400, 150, text="", fill="black", font=FONT)
 port = canvas.create_text(400, 263, text="", fill="black", font=FONT)
-
 
 next_card()
 window.focus_force()
