@@ -16,7 +16,6 @@ except FileNotFoundError:
 else:
     to_learn = df.to_dict(orient="records")
 
-
 # ---------------------------- Button functions ------------------------------- #
 
 def next_card():
