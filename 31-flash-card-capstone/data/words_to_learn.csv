@@ -1,0 +1,44 @@
+port_num,service,transport_protocol
+19,CHARGEN,"TCP, UDP"
+22,SSH/SCP/SFTP,"TCP, UDP, SCTP "
+43,WHOIS,"TCP, UDP"
+49,TACACS,UDP
+67,DHCP/BOOTP,UDP
+68,DHCP/BOOTP,UDP
+79,Finger,TCP
+88,Kerberos,"TCP, UDP"
+113,Ident,TCP
+123,NTP,UDP
+135,Microsoft RPC EPMAP,"TCP, UDP"
+138,NetBIOS-dgm,"TCP, UDP"
+143,IMAP,"TCP, UDP"
+161,SNMP-agents (unencrypted),UDP
+177,XDMCP,UDP
+194,IRC,UDP
+264,BGMP,"TCP, UDP"
+318,TSP,"TCP, UDP"
+381,HP Openview,"TCP, UDP"
+411,(Multiple uses),"TCP, UDP"
+412,(Multiple uses) ,"TCP, UDP"
+443,HTTPS (HTTP over SSL),"TCP, UDP, SCTP"
+445,Microsoft DS SMB,"TCP, UDP"
+464,Kerberos,"TCP, UDP"
+465,"SMTP over TLS/SSL, SSM",TCP
+497,Dantz Retrospect,"TCP, UDP"
+500,IPSec / ISAKMP / IKE,UDP
+512,rexec,TCP
+514,syslog,UDP
+520,RIP,UDP
+521,RIPng (IPv6),UDP
+540,UUCP,TCP
+554,RTSP,"TCP, UDP"
+546,DHCPv6,"TCP, UDP"
+560,rmonitor,UDP
+587,SMTP,TCP
+591,FileMaker,TCP
+593,Microsoft DCOM,"TCP, UDP"
+596,SMSD,"TCP, UDP"
+646,LDP (MPLS),"TCP, UDP"
+691,Microsoft Exchange,TCP
+873,rsync,TCP
+902,VMware Server,"TCP, UDP"

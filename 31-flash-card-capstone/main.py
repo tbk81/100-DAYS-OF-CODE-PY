@@ -4,14 +4,20 @@ import random
 
 BACKGROUND_COLOR = "#B1DDC6"
 FONT = ("Ariel", 40, "italic")
-
-df = pandas.read_csv("data/common_ports.csv")
-to_learn = df.to_dict(orient="records")
-
+to_learn = {}
 current_card = {}  # Empty dict to be able to access from other functions
 print(to_learn)
 
-# ---------------------------- Next port button ------------------------------- #
+try:
+    df = pandas.read_csv("data/words_to_learn.csv")
+except FileNotFoundError:
+    og_data = pandas.read_csv("data/common_ports.csv")
+    to_learn = og_data.to_dict(orient="records")
+else:
+    to_learn = df.to_dict(orient="records")
+
+
+# ---------------------------- Button functions ------------------------------- #
 
 def next_card():
     global current_card, flip_timer
@@ -28,8 +34,12 @@ def flip_card():
     canvas.itemconfig(port, text=current_card["service"], fill="white")
     canvas.itemconfig(card_bg, image=back_card_img)
 
+def card_known():
+    to_learn.remove(current_card)
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("data/words_to_learn.csv", index=False)
 
-
+    next_card()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -53,7 +63,7 @@ wrong_button.grid(column=0, row=1)
 
 correct_image = PhotoImage(file="images/right.png")
 correct_button = Button(image=correct_image, highlightthickness=0,
-                        highlightbackground=BACKGROUND_COLOR, command=next_card)
+                        highlightbackground=BACKGROUND_COLOR, command=card_known)
 correct_button.grid(column=1, row=1)
 
 # Canvas text
