@@ -1,4 +1,4 @@
-
+24 - with open, replace words in txt file
 
 27 - tkinter buttons
 
