@@ -45,27 +45,36 @@ HINT 4: The message should have the Subject: Happy Birthday then after \n\n The 
 
 import pandas
 import datetime as dt
+import smtplib
 import random
 
-PLACEHOLDER = "[NAME]"
+my_email = "tbk81dev@gmail.com"
+password = "dnchhnyasyhcqwfb"
 
 df = pandas.read_csv("birthdays.csv")
-print(df.values)
+# print(df.values)
 b_day_dict = {(row.month, row.day): row for index, row in df.iterrows()}
 # print(b_day_dict)
-for key in b_day_dict:
-    print(key)
-    print(b_day_dict[key])
-
-month = df.month.values
-day = df.day.values
+# for key in b_day_dict:
+#     print(key)
+#     print(b_day_dict[key])
 
 now = dt.datetime.now()
+today = (now.month, now.day)
+# print(b_day_dict[today]["name"])
+# print(type(b_day_dict[today]["name"]))
 
-# for name in df.name.values:
-#     if now.month in month and now.day in day:
-#         with open(f"letter_templates/letter_{random.randint(1,3)}.txt") as letter_file:
-#             letter = letter_file.read()
-#             strip_name = name.strip()
-#             new_letter = letter.replace(PLACEHOLDER, strip_name)
-#             print(new_letter)
+if today in b_day_dict:
+    person = b_day_dict[today]
+    letter_path = f"letter_templates/letter_{random.randint(1,3)}.txt"
+    with open(letter_path) as letter_file:
+        contents = letter_file.read()
+        new_letter = contents.replace("[NAME]", person["name"])
+
+    with smtplib.SMTP("smtp.gmail.com") as connection:
+        connection.starttls()
+        connection.login(user=my_email, password=password)
+        connection.sendmail(from_addr=my_email,
+                            to_addrs=person["email"],
+                            msg=f"Subject: Happy Birthday!\n\n{new_letter}"
+                            )
