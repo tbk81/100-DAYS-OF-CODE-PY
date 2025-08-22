@@ -8,4 +8,4 @@
 
 32 - smtp, datetime module
 
-33 - APIs
+33 - Intro to APIs
