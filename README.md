@@ -9,3 +9,5 @@
 32 - smtp, datetime module
 
 33 - Intro to APIs
+
+34 - API, tkinter in a class, type hints and ->

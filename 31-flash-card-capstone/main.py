@@ -55,7 +55,7 @@ canvas = Canvas(width=850, height=576, bg=BACKGROUND_COLOR, highlightthickness=0
 front_card_img = PhotoImage(file="images/card_front.png")
 back_card_img = PhotoImage(file="images/card_back.png")
 card_bg = canvas.create_image(425, 288, image=front_card_img)
-canvas.grid(column=0, row=0, columnspan=2)
+
 
 # Buttons
 wrong_image = PhotoImage(file="images/wrong.png")
