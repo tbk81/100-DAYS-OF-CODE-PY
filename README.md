@@ -11,3 +11,5 @@
 33 - Intro to APIs
 
 34 - API, tkinter in a class, type hints and ->
+
+35 - API keys, authentication, SMS
