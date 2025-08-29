@@ -48,8 +48,8 @@ import datetime as dt
 import smtplib
 import random
 
-my_email = "tbk81dev@gmail.com"
-password = "dnchhnyasyhcqwfb"
+MY_EMAIL = os.environ.get("MY_EMAIL")
+GMAIL_PASSWORD = os.environ.get("GMAIL_PASSWORD")
 
 df = pandas.read_csv("birthdays.csv")
 # print(df.values)
