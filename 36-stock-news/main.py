@@ -7,14 +7,8 @@ COMPANY_NAME = "Avidity"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 STOCK_API = os.environ.get("AV_API_KEY")
-NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
-
-
-# STEP 1: Use https://www.alphavantage.co/documentation/#daily
-# When stock price increase/decreases by 5% between yesterday and the day before yesterday, then print("Get News").
-
-# TODO 1. - Get yesterday's closing stock price. Hint: You can perform list comprehensions on Python dictionaries.
-# e.g. [new_value for (key, value) in dictionary.items()]
+NEWS_ENDPOINT = "https://newsapi.org/v2/top-headlines"
+NEWS_API = os.environ.get("NEWS_API")
 
 av_stock_params = {
     "function": "TIME_SERIES_DAILY",
@@ -22,11 +16,23 @@ av_stock_params = {
     "apikey": STOCK_API
 }
 
-response = requests.get(STOCK_ENDPOINT, params=av_stock_params)
-data = response.json()
-# print(data)
+news_params = {
+    "country": "US",
+    "apiKey": NEWS_API
+}
 
-daily_close = data["Time Series (Daily)"]
+# STEP 1: Use https://www.alphavantage.co/documentation/#daily
+# When stock price increase/decreases by 5% between yesterday and the day before yesterday, then print("Get News").
+
+# TODO 1. - Get yesterday's closing stock price. Hint: You can perform list comprehensions on Python dictionaries.
+# e.g. [new_value for (key, value) in dictionary.items()]
+
+
+stock_response = requests.get(STOCK_ENDPOINT, params=av_stock_params)
+stock_data = stock_response.json()
+# print(stock_data)
+
+daily_close = stock_data["Time Series (Daily)"]
 # print(daily_close)
 # yesterday_close = data["Time Series (Daily)"]["2025-08-28"]["4. close"]
 # print(yesterday_close)
@@ -56,6 +62,10 @@ close_percentage3 = 1 - (min(close_prices) / max(close_prices))
 print(close_percentage3)
 
 # TODO 5. - If TODO4 percentage is greater than 5 then print("Get News").
+news_response = requests.get(NEWS_ENDPOINT, params=news_params)
+news_data = news_response.json()
+print(news_data)
+
 
 # TODO 6. - Instead of printing ("Get News"), use the News API to get articles related to the COMPANY_NAME.
 # STEP 2: https://newsapi.org/
