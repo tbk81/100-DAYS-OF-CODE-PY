@@ -24,26 +24,21 @@ news_params = {
 
 stock_response = requests.get(STOCK_ENDPOINT, params=av_stock_params)
 stock_data = stock_response.json()
-print(stock_data)
 daily_close = stock_data["Time Series (Daily)"]
 daily_li = [value for (key, value) in daily_close.items()]
 today_close = float(daily_li[0]["4. close"])
-# print(f"{today_close}\n")
 yesterday_close = float(daily_li[1]["4. close"])
-# print(f"{yesterday_close}\n")
 close_diff = abs(today_close - yesterday_close)
-print(close_diff)
 close_prices = (today_close, yesterday_close)
 close_percentage = 1 - (min(close_prices) / max(close_prices))
-print(close_percentage)
 
 if close_percentage >= 0.05:
     news_response = requests.get(NEWS_ENDPOINT, params=news_params)
     news_data = news_response.json()
     article_li = news_data["articles"][:3]
-    headlines = [f"Headline: {article_li[0]}" for article in article_li]
-    print(news_data)
-    print(article_li)
+    headlines = [f"Headline: {article["title"]}.\nBrief: {article["description"]}\n"
+                 for article in article_li]
+    print(headlines)
 
 
 # TODO 8. - Create a new list of the first 3 article's headline and description using list comprehension.
