@@ -3,77 +3,48 @@ import os
 import requests
 
 STOCK_NAME = "RNA"
-COMPANY_NAME = "Avidity"
+STOCK_NAME_TEST = "GOOGL"
+COMPANY_NAME = "Google"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 STOCK_API = os.environ.get("AV_API_KEY")
-NEWS_ENDPOINT = "https://newsapi.org/v2/top-headlines"
+NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 NEWS_API = os.environ.get("NEWS_API")
 
 av_stock_params = {
     "function": "TIME_SERIES_DAILY",
-    "symbol": STOCK_NAME,
+    "symbol": STOCK_NAME_TEST,
     "apikey": STOCK_API
 }
 
 news_params = {
-    "country": "US",
+    "qInTitle": COMPANY_NAME,
     "apiKey": NEWS_API
 }
 
-# STEP 1: Use https://www.alphavantage.co/documentation/#daily
-# When stock price increase/decreases by 5% between yesterday and the day before yesterday, then print("Get News").
-
-# TODO 1. - Get yesterday's closing stock price. Hint: You can perform list comprehensions on Python dictionaries.
-# e.g. [new_value for (key, value) in dictionary.items()]
-
-
 stock_response = requests.get(STOCK_ENDPOINT, params=av_stock_params)
 stock_data = stock_response.json()
-# print(stock_data)
-
+print(stock_data)
 daily_close = stock_data["Time Series (Daily)"]
-# print(daily_close)
-# yesterday_close = data["Time Series (Daily)"]["2025-08-28"]["4. close"]
-# print(yesterday_close)
-# day_before_close = data["Time Series (Daily)"]["2025-08-27"]["4. close"]
-# print(day_before_close)
-
 daily_li = [value for (key, value) in daily_close.items()]
+today_close = float(daily_li[0]["4. close"])
+# print(f"{today_close}\n")
 yesterday_close = float(daily_li[1]["4. close"])
-print(f"{yesterday_close}\n")
-# for c in daily_li:
-#     print(c["4. close"])
-# print(daily_li[0]["4. close"])
-
-# TODO 2. - Get the day before yesterday's closing stock price
-day_before_close = float(daily_li[2]["4. close"])
-print(f"{day_before_close}\n")
-
-# TODO 3. - Find the positive difference between 1 and 2. e.g. 40 - 20 = -20, but the positive difference is 20.
-# Hint: https://www.w3schools.com/python/ref_func_abs.asp
-close_diff = abs(yesterday_close) - abs(day_before_close)
+# print(f"{yesterday_close}\n")
+close_diff = abs(today_close - yesterday_close)
 print(close_diff)
-# TODO 4. - Work out the percentage difference in price between closing price yesterday and closing price the day
-# before yesterday.
+close_prices = (today_close, yesterday_close)
+close_percentage = 1 - (min(close_prices) / max(close_prices))
+print(close_percentage)
 
-close_prices = (yesterday_close, day_before_close)
-close_percentage3 = 1 - (min(close_prices) / max(close_prices))
-print(close_percentage3)
+if close_percentage >= 0.05:
+    news_response = requests.get(NEWS_ENDPOINT, params=news_params)
+    news_data = news_response.json()
+    article_li = news_data["articles"][:3]
+    headlines = [f"Headline: {article_li[0]}" for article in article_li]
+    print(news_data)
+    print(article_li)
 
-# TODO 5. - If TODO4 percentage is greater than 5 then print("Get News").
-news_response = requests.get(NEWS_ENDPOINT, params=news_params)
-news_data = news_response.json()
-print(news_data)
-
-
-# TODO 6. - Instead of printing ("Get News"), use the News API to get articles related to the COMPANY_NAME.
-# STEP 2: https://newsapi.org/
-
-# TODO 7. - Use Python slice operator to create a list that contains the first 3 articles.
-# Hint: https://stackoverflow.com/questions/509211/understanding-slice-notation
-# STEP 3: Use twilio.com/docs/sms/quickstart/python
-# to send a separate message with each article's title and description to your phone number.
 
 # TODO 8. - Create a new list of the first 3 article's headline and description using list comprehension.
 
