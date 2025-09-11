@@ -1,5 +1,7 @@
 24 - with open, replace words in txt file
 
+25 - list comprehension
+
 27 - tkinter buttons
 
 28 - how to implement a timer
