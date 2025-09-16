@@ -1,14 +1,15 @@
 import requests
 from datetime import datetime
 import time
+import os
 
 MY_LAT = 34.052235
 MY_LNG = -118.243683
 TZID = "America/Los_Angeles"
 SUN_URL = "https://api.sunrise-sunset.org/json"
 ISS_URL = "http://api.open-notify.org/iss-now.json"
-my_email = "tbk81dev@gmail.com"
-password = "dnchhnyasyhcqwfb"
+my_email = os.eviron.get("DEV_EMAIL")
+password = os.eviron.get("DEV_GMAIL_APP_PW")
 
 
 def is_night():
