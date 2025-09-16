@@ -1,0 +1,9 @@
+{
+  "workout": {
+    "Date": date,
+    "Time": time,
+    "Exercise": exercise,
+    "Duration": duration,
+    "Calories": calories
+  }
+}

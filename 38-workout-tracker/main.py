@@ -5,58 +5,61 @@ from datetime import datetime
 
 APP_ID = os.environ.get("NUTRITIONX_ID")
 APP_API = os.environ.get("NUTRITIONX_API")
+SHEETY_TOKEN = os.environ.get("SHEETY_TOKEN")
 
 exercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
 sheety_endpoint = os.environ.get("SHEETY_ENDPNT")
 
-headers = {
+nutritionx_headers = {
     "Content-Type": 'application/json',
     "x-app-id": APP_ID,
     "x-app-key": APP_API
     }
 
-# usr_input = input("Type your exercise: ")
+sheety_headers = {
+    "Authorization": f"Bearer {SHEETY_TOKEN}"
+}
 
-# params = {
-#     "query": usr_input,
-#     "gender": "male",
-#     "weight_kg": "127",
-#     "height_cm": "187"
-#     }
+usr_input = input("Type your exercise: ")
 
-# nutritionx_response = requests.post(url=exercise_endpoint, json=params, headers=headers)
+params = {
+    "query": usr_input,
+    "gender": "male",
+    "weight_kg": "127",
+    "height_cm": "187"
+    }
+
+nutritionx_response = requests.post(url=exercise_endpoint, json=params, headers=nutritionx_headers)
+result = nutritionx_response.json()
 # print(nutritionx_response.text)
 # data = nutritionx_response.json()
 # with open("nutritionx.json", "w") as f:
 #     json.dump(data, f, indent=4)
 
 now = datetime.now()
-print(now)
 date = now.strftime("%d/%m/%Y")
 time = now.strftime("%H:%M")
-print(date)
-print(time)
 
-with open('nutritionx.json', 'r') as f:
-    data = json.load(f)
+# with open('nutritionx.json', 'r') as f:
+#     data = json.load(f)
 
-exercise = data['exercises'][0]['user_input']
-duration = data['exercises'][0]['duration_min']
-calories = data['exercises'][0]['nf_calories']
-# print(f"{exercise}, {duration} minutes, {calories} calories burned")
+# exercise = data['exercises'][0]['user_input']
+# duration = data['exercises'][0]['duration_min']
+# calories = data['exercises'][0]['nf_calories']
 
-sheet_post = {
-    "workout": {
-        "Date": date,
-        "Time": time,
-        "Exercise": exercise,
-        "Duration": duration,
-        "Calories": calories
+for exercise in result['exercises']:
+    sheet_post = {
+        "workout": {
+            "Date": date,
+            "Time": time,
+            "Exercise": exercise['name'].title(),
+            "Duration": exercise['duration_min'],
+            "Calories": exercise['nf_calories']
+            }
         }
-    }
+    post_response = requests.post(sheety_endpoint, json=sheet_post, headers=sheety_headers)
+    print(post_response.text)
 
 # sheety_response = requests.get(url=sheety_endpoint)
 # print(sheety_response.text)
 
-post_response = requests.post(url=sheety_endpoint, json=sheet_post)
-print(post_response.text)
