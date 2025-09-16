@@ -46,7 +46,14 @@ calories = data['exercises'][0]['nf_calories']
 # print(f"{exercise}, {duration} minutes, {calories} calories burned")
 
 sheet_post = {
-
+    "workout": {
+        "Date": date,
+        "Time": time,
+        "Exercise": exercise,
+        "Duration": duration,
+        "Calories": calories
+        }
+    }
 
 # sheety_response = requests.get(url=sheety_endpoint)
 # print(sheety_response.text)
