@@ -17,3 +17,5 @@
 35 - API keys, authentication, SMS
 
 37 - HTTP post requests
+
+38 - HTTPS post and PUT requests. JSON
