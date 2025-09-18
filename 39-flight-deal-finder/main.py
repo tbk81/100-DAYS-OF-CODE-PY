@@ -2,8 +2,8 @@
 # achieve the program requirements.
 
 import os
-
 import requests
+from data_manager import DataManager
 
 AMADEUS_API_KEY = os.environ.get("AMADEUS_API_KEY")
 AMADEUS_API_SECRET = os.environ.get("AMADEUS_API_SECRET")
@@ -11,13 +11,13 @@ AMADEUS_TOKEN = os.environ.get("AMADEUS_TOKEN")
 
 amadeus_endpnt = "https://test.api.amadeus.com"
 amadeus_token_endpnt = "/v1/security/oauth2/token"
-amadeus_city_endpnt = "/reference-data/locations/cities"
+amadeus_city_endpnt = "/reference-data/locations/"
 
 amadeus_headers = {
     "Authorization": f"Bearer {AMADEUS_TOKEN}"
 }
 
-# Getting an access token
+# Creating an access token
 # amadeus_token_headers = {
 #     "Content-Type": "application/x-www-form-urlencoded",
 #     }
@@ -30,10 +30,15 @@ amadeus_headers = {
 # print(token_response.text)
 
 city_params = {
-    "city": "San Diego"
+    "keyword": "PARIS"
 }
 
-city_response = requests.post(amadeus_endpnt + amadeus_city_endpnt, headers=amadeus_headers, params=city_params)
-print(city_response.text)
+# print(amadeus_endpnt + amadeus_city_endpnt)
+# city_response = requests.post(amadeus_endpnt + amadeus_city_endpnt, headers=amadeus_headers, params=city_params)
+# print(city_response.text)
+# print(city_response)
 
-
+data = DataManager()
+# for price in data:
+#     print
+print(data["prices"])
