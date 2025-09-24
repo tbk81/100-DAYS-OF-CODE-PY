@@ -44,7 +44,7 @@
 # print(data["prices"])
 
 
-# Passes the data back to the main.py file, so that you can print the data from main.py
+# Passes the data back to the main.py so that you can print the data from main.py
 import time
 from data_manager import DataManager
 from flight_search import FlightSearch
@@ -63,7 +63,7 @@ print(sheet_data)
 for row in sheet_data:
     if row["iataCode"] == "":
         row["iataCode"] = flight_search.get_destination_code(row["city"])
-        # slowing down requests to avoid rate limit
+        # slowing down requests to avoid the rate limit
         time.sleep(2)
 print(f"sheet_data:\n {sheet_data}")
 
