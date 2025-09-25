@@ -19,3 +19,5 @@
 37 - HTTP post requests
 
 38 - HTTPS post and PUT requests. JSON
+
+39 - API calls and using them with classes and functions
