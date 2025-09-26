@@ -12,7 +12,7 @@ sheet_data = data_manager.get_destination_data()
 flight_search = FlightSearch()
 
 # Set your origin airport
-ORIGIN_CITY_IATA = "LON"
+ORIGIN_CITY_IATA = "SAN"
 
 
 # ==================== Update the Airport Codes in Google Sheet ====================
@@ -41,6 +41,6 @@ for destination in sheet_data:
         to_time=six_month_from_today
     )
     cheapest_flight = find_cheapest_flight(flights)
-    print(f"{destination['city']}: £{cheapest_flight.price}")
+    print(f"{destination['city']}: ${cheapest_flight.price}")
     # Slowing down requests to avoid a rate limit
     time.sleep(2)
