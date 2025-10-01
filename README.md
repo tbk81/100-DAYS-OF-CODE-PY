@@ -22,4 +22,6 @@
 
 39 and 40 - API calls and using them with classes and functions
 
-41 - HTML basics
+41 - HTML basics; heading, paragraph, void elements
+
+42 - HTML intermediate; list elements, nesting, anchor elements
