@@ -25,3 +25,5 @@
 41 - HTML basics; heading, paragraph, void elements
 
 42 - HTML intermediate; list elements, nesting, anchor elements
+
+43 - CSS elements and attributes
