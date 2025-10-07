@@ -30,4 +30,4 @@
 
 44 - CSS colors, fonts, box model
 
-45 - beautiful soup
+45 - beautiful soup basics, file writing
