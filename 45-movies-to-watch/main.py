@@ -19,7 +19,7 @@ movies = soup.find_all(name='h3', class_='title')
 
 movie_li = [movie.get_text() for movie in movies]
 movie_li.reverse()
-# movies_li = [::-1}  # Another way to reverse a list
+# movies_li = [::-1] # Another way to reverse a list
 
 with open("movies.txt", "w") as movies_data:
     for movie in movie_li:
