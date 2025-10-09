@@ -12,9 +12,14 @@ cal = Calendar()
 # print(cal.monthdays2calendar(int(usr_date[0]), int(usr_date[1])))
 # usr_cal = cal.monthdays2calendar(int(usr_date[0]), int(usr_date[1]))
 usr_cal = cal.monthdatescalendar(int(usr_date[0]), int(usr_date[1]))
-for d in range(len(usr_cal)):
-    print(usr_cal[d])
-print(usr_cal[1][-2])
+for week in range(len(usr_cal)):
+    # print(usr_cal[week])
+    print(usr_cal[week][-2])
+    # for day in range(len(usr_cal[week])):
+    #     if str(usr_cal[week][day]) == usr_input:
+    #         print(usr_cal[week])
+        # print(usr_cal[week][day])
+# print(usr_cal[1][-2])
 
 
 # Note that the week of billboards start on saturday. i.e., 2000-08-14 would be the week of 08-12 to 8-19
