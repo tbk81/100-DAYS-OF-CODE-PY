@@ -19,6 +19,7 @@ usr_cal = cal.monthdatescalendar(int(usr_date[0]), int(usr_date[1]))
 # print(usr_cal)
 for week in range(len(usr_cal)):
     print(usr_cal[week])
+
     # print(usr_cal[week])
     # for day in range(len(usr_cal[week])):
     #     if str(usr_cal[week][day]) == usr_input:
