@@ -6,25 +6,25 @@ import os
 CLIENT_ID = "SPOTIFY_CLIENT_ID"
 SECRET = "CLIENT_SECRET"
 
-# usr_input = input("Which year do you want to travel to? (YYYY-MM-DD): ")
-usr_input = "2000-08-14"
+usr_input = input("Which year do you want to travel to? (YYYY-MM-DD): ")
 usr_date = usr_input.split("-")
 
-# print(usr_input)
-# print(usr_date)
-cal = Calendar()
-# print(cal.monthdays2calendar(int(usr_date[0]), int(usr_date[1])))
-# usr_cal = cal.monthdays2calendar(int(usr_date[0]), int(usr_date[1]))
-usr_cal = cal.monthdatescalendar(int(usr_date[0]), int(usr_date[1]))
-# print(usr_cal)
-for week in range(len(usr_cal)):
-    print(usr_cal[week])
 
-    # print(usr_cal[week])
-    # for day in range(len(usr_cal[week])):
-    #     if str(usr_cal[week][day]) == usr_input:
-    #         print(usr_cal[week])
+def get_weekday(date):
+    week_date = ""
+    cal = Calendar()
+    usr_cal = cal.monthdatescalendar(int(date[0]), int(date[1]))
+
+    for week in range(len(usr_cal)):
+        for day in range(len(usr_cal[week])):
+            if usr_input == str(usr_cal[week][day]) and usr_input != str(usr_cal[week][-1]):
+                week_date = usr_cal[week][-2]
+    return week_date
+
         # print(usr_cal[week][day])
+    # if str(usr_cal[week][day]) == usr_input:
+    #     print(usr_cal[week])
+    # print(usr_cal[week][day])
 # print(usr_cal[1][-2])
 
 

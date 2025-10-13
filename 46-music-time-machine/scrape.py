@@ -28,8 +28,8 @@ artist_class = ("c-label a-no-trucate a-font-secondary u-font-size-15 "
 song = soup.find_all(name="h3", class_=song_class)
 artist = soup.find_all(name='span', class_=artist_class)
 hot_100_li = [f"{i+1}) {artist[i].get_text().strip()} - {song[i].get_text().strip()}" for i in range(len(artist))]
-# for s in hot_100_li:
-#     print(s)
+for s in hot_100_li:
+    print(s)
 # print(hot_100_li)
 
 
