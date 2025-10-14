@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 from calendar import Calendar
 import os
 
-CLIENT_ID = "SPOTIFY_CLIENT_ID"
-SECRET = "CLIENT_SECRET"
+CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
+SECRET = os.environ.get("CLIENT_SECRET")
 
 endpoint = "https://www.billboard.com/charts/hot-100/"
 
@@ -32,8 +32,9 @@ def bb_100_li():
         data = f.read()
     soup = BeautifulSoup(data, 'html.parser')
     song_class = ("c-title a-font-basic u-letter-spacing-0010 u-max-width-397 lrv-u-font-size-16 "
-                  "lrv-u-font-size-14@mobile-max u-line-height-22px u-word-spacing-0063 u-line-height-normal@mobile-max "
-                  "a-truncate-ellipsis-2line lrv-u-margin-b-025 lrv-u-margin-b-00@mobile-max")
+                  "lrv-u-font-size-14@mobile-max u-line-height-22px u-word-spacing-0063 "
+                  "u-line-height-normal@mobile-max a-truncate-ellipsis-2line lrv-u-margin-b-025 "
+                  "lrv-u-margin-b-00@mobile-max")
     artist_class = ("c-label a-no-trucate a-font-secondary u-font-size-15 "
                     "u-font-size-13@mobile-max u-line-height-18px@mobile-max u-letter-spacing-0010 u-line-height-21px "
                     "a-children-link-color-black a-children-link-color-brand-secondary:hover "
@@ -50,7 +51,7 @@ def bb_100_li():
 #
 # travel_week = get_weekday(usr_date)
 # write_site(f'{endpoint}/{travel_week}')
-print(bb_100_li())
+bb_100_li()
 
 # ----------------------------------------------- TESTING ----------------------------------------------- #
 # Note that the week of billboards start on saturday. i.e., 2000-08-14 would be the week of 08-12 to 8-19
