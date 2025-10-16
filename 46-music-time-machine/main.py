@@ -3,9 +3,16 @@ from bs4 import BeautifulSoup
 from calendar import Calendar
 import os
 import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 
 CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
 SECRET = os.environ.get("CLIENT_SECRET")
+
+
+auth_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(auth_manager=auth_manager)
+
+
 
 endpoint = "https://www.billboard.com/charts/hot-100/"
 
