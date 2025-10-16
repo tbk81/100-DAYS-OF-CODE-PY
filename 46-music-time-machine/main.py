@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from calendar import Calendar
 import os
+import spotipy
 
 CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
 SECRET = os.environ.get("CLIENT_SECRET")
