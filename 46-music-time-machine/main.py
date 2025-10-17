@@ -3,18 +3,25 @@ from bs4 import BeautifulSoup
 from calendar import Calendar
 import os
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+# from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 
 CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
 SECRET = os.environ.get("CLIENT_SECRET")
-
-
-auth_manager = SpotifyClientCredentials()
-sp = spotipy.Spotify(auth_manager=auth_manager)
-
-
-
+REDIRECT_URI = "http://127.0.0.1:8000/callback"
+SCOPE = "playlist-modify-private"
 endpoint = "https://www.billboard.com/charts/hot-100/"
+
+# auth_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=SECRET)
+# sp = spotipy.Spotify(auth_manager=auth_manager)
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
+                                               client_secret=SECRET,
+                                               redirect_uri=REDIRECT_URI,
+                                               scope="playlist-modify-private"))
+
+user = sp.current_user()
+print(f"Authenticated as {user['display_name']}")
+
 
 
 def get_weekday(date):
@@ -59,7 +66,7 @@ def bb_100_li():
 #
 # travel_week = get_weekday(usr_date)
 # write_site(f'{endpoint}/{travel_week}')
-bb_100_li()
+# bb_100_li()
 
 # ----------------------------------------------- TESTING ----------------------------------------------- #
 # Note that the week of billboards start on saturday. i.e., 2000-08-14 would be the week of 08-12 to 8-19
