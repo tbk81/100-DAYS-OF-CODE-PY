@@ -22,6 +22,8 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
 user = sp.current_user()
 print(f"Authenticated as {user['display_name']}")
 
+song = sp.search(q="Someone To Call My Lover")
+print(song)
 
 
 def get_weekday(date):
