@@ -23,7 +23,9 @@ user = sp.current_user()
 print(f"Authenticated as {user['display_name']}")
 
 song = sp.search(q="Someone To Call My Lover")
-print(song)
+with open('song.json', 'w') as f:
+    f.write(str(song))
+# print(song)
 
 
 def get_weekday(date):
