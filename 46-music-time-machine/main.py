@@ -19,13 +19,9 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                redirect_uri=REDIRECT_URI,
                                                scope="playlist-modify-private"))
 
-user = sp.current_user()
-print(f"Authenticated as {user['display_name']}")
+# user = sp.current_user()
+# print(f"Authenticated as {user['display_name']}")
 
-song = sp.search(q="Someone To Call My Lover")
-with open('song.json', 'w') as f:
-    f.write(str(song))
-# print(song)
 
 
 def get_weekday(date):
@@ -61,16 +57,29 @@ def bb_100_li():
                     "u-max-width-397 u-max-width-230@tablet-only u-max-width-300@mobile-max")
     song = soup.find_all(name="h3", class_=song_class)
     artist = soup.find_all(name='span', class_=artist_class)
-    hot_100_li = [f"{i + 1}) {artist[i].get_text().strip()} - {song[i].get_text().strip()}" for i in range(len(artist))]
+    hot_100_li = [[artist[i].get_text().strip(), song[i].get_text().strip()] for i in range(len(artist))]
     return hot_100_li
 
 
-# usr_input = input("Which year do you want to travel to? (YYYY-MM-DD): ")
-# usr_date = usr_input.split("-")
-#
-# travel_week = get_weekday(usr_date)
-# write_site(f'{endpoint}/{travel_week}')
-# bb_100_li()
+usr_input = input("Which year do you want to travel to? (YYYY-MM-DD): ")
+usr_date = usr_input.split("-")
+
+travel_week = get_weekday(usr_date)
+write_site(f'{endpoint}/{travel_week}')
+songs_li = bb_100_li()
+
+print(songs_li)
+
+# song = sp.search(q="Someone To Call My Lover")
+# with open('song.json', 'w') as f:
+#     f.write(str(song))
+# print(song)
+
+
+
+
+
+
 
 # ----------------------------------------------- TESTING ----------------------------------------------- #
 # Note that the week of billboards start on saturday. i.e., 2000-08-14 would be the week of 08-12 to 8-19
