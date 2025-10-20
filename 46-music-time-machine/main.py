@@ -61,19 +61,27 @@ def bb_100_li():
     return hot_100_li
 
 
-usr_input = input("Which year do you want to travel to? (YYYY-MM-DD): ")
+def get_uri(li, year):
+    uri_li = [sp.search(q=f"track: {s[1]} year: {year}") for s in li]
+    return uri_li
+    # for s in li:
+    #     song = sp.search(q=f"track: {s[1]} year: {year}")
+
+
+# usr_input = input("Which year do you want to travel to? (YYYY-MM-DD): ")
+usr_input = "1995-07-03"
 usr_date = usr_input.split("-")
+# print(usr_date[0])
 
 travel_week = get_weekday(usr_date)
 write_site(f'{endpoint}/{travel_week}')
 songs_li = bb_100_li()
+spotify_uri_li = get_uri(songs_li, usr_date[0])
+print(spotify_li)
 
-print(songs_li)
 
-# song = sp.search(q="Someone To Call My Lover")
-# with open('song.json', 'w') as f:
-#     f.write(str(song))
-# print(song)
+# song = sp.search(q="track: How Do U Want It/California Love year: 1996")
+# print(song['tracks']['items'][0]['album']['artists'][0]['uri'])
 
 
 
