@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from calendar import Calendar
 import os
 import spotipy
-# from spotipy.oauth2 import SpotifyClientCredentials
 from spotipy.oauth2 import SpotifyOAuth
 
 CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
@@ -12,17 +11,14 @@ REDIRECT_URI = "http://127.0.0.1:8000/callback"
 SCOPE = "playlist-modify-private"
 endpoint = "https://www.billboard.com/charts/hot-100/"
 
-# auth_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=SECRET)
-# sp = spotipy.Spotify(auth_manager=auth_manager)
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                client_secret=SECRET,
                                                redirect_uri=REDIRECT_URI,
-                                               scope="playlist-modify-private"))
+                                               scope="playlist-modify-private",
+                                               cache_path=".cache"))
 
 # user = sp.current_user()
 # print(f"Authenticated as {user['display_name']}")
-
-
 
 def get_weekday(date):
     week_date = ""
@@ -69,18 +65,20 @@ def get_uri(li, year):
 # usr_input = input("Which year do you want to travel to? (YYYY-MM-DD): ")
 usr_input = "1995-07-03"
 usr_date = usr_input.split("-")
-# print(usr_date[0])
 
 travel_week = get_weekday(usr_date)
 write_site(f'{endpoint}/{travel_week}')
 songs_li = bb_100_li()
 spotify_uri_li = get_uri(songs_li, usr_date[0])
-print(spotify_uri_li)
 
+user = sp.current_user()
+description = f"Billboard hot 100 for the week of {usr_date[1]}-{usr_date[1]} from the year {usr_date[0]}"
+new_playlist = sp.user_playlist_create(user=user,
+                                       name=f"{usr_input} Billboard 100",
+                                       public=False,
+                                       description=description)
 
-# song = sp.search(q="track: How Do U Want It/California Love year: 1996")
-# print(song['tracks']['items'][0]['album']['artists'][0]['uri'])
-
+sp.playlist_add_items(playlist_id=new_playlist['id'], items=spotify_uri_li)
 
 
 
@@ -88,6 +86,9 @@ print(spotify_uri_li)
 
 
 # ----------------------------------------------- TESTING ----------------------------------------------- #
+# song = sp.search(q="track: How Do U Want It/California Love year: 1996")
+# print(song['tracks']['items'][0]['album']['artists'][0]['uri'])
+
 # Note that the week of billboards start on saturday. i.e., 2000-08-14 would be the week of 08-12 to 8-19
 # This would be then usr_cal[1][-2]
 # way back archive https://web.archive.org/web/20180219192606/https://www.billboard.com/charts/hot-100/2000-08-26
