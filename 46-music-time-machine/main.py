@@ -7,7 +7,8 @@ from spotipy.oauth2 import SpotifyOAuth
 
 CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
 SECRET = os.environ.get("CLIENT_SECRET")
-REDIRECT_URI = "http://127.0.0.1:8000/callback"
+# REDIRECT_URI = "http://127.0.0.1:8000/callback"
+REDIRECT_URI = "https://example.com/"
 SCOPE = "playlist-modify-private"
 endpoint = "https://www.billboard.com/charts/hot-100/"
 
@@ -17,8 +18,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                scope="playlist-modify-private",
                                                cache_path=".cache"))
 
-# user = sp.current_user()
-# print(f"Authenticated as {user['display_name']}")
 
 def get_weekday(date):
     week_date = ""
@@ -86,6 +85,7 @@ sp.playlist_add_items(playlist_id=new_playlist['id'], items=spotify_uri_li)
 
 
 # ----------------------------------------------- TESTING ----------------------------------------------- #
+# print(f"Authenticated as {user['display_name']}")
 # song = sp.search(q="track: How Do U Want It/California Love year: 1996")
 # print(song['tracks']['items'][0]['album']['artists'][0]['uri'])
 
