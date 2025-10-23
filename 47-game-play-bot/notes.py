@@ -21,13 +21,18 @@ driver.get(python_org)
 # price_cents = driver.find_element(By.CLASS_NAME, value='a-price-fraction')
 # print(f"price = {price_dollar.text}.{price_cents.text}")
 
-search_bar = driver.find_element(By.NAME, value='q')
-print(search_bar.tag_name)
-print(search_bar.get_attribute("placeholder"))
+# search_bar = driver.find_element(By.NAME, value='q')
+# print(search_bar.tag_name)
+# print(search_bar.get_attribute("placeholder"))
+#
+# button = driver.find_element(By.ID, value="submit")
+# print(button.size)
 
-button = driver.find_element(By.ID, value="submit")
-print(button.size)
+# doc_link = driver.find_element(By.CSS_SELECTOR, value=".documentation-widget a")
+# print(doc_link.text)
 
+# bug_link = driver.find_element(By.XPATH, value='//*[@id="site-map"]/div[2]/div/ul/li[3]/a')
+# print(bug_link.text)
 
 
 driver.quit()
