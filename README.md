@@ -33,3 +33,5 @@
 45 - beautiful soup basics, file writing
 
 46 - beautiful soup, spotipy API
+
+47 - Selenium web driver
