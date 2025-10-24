@@ -34,6 +34,14 @@ driver.get(python_org)
 # bug_link = driver.find_element(By.XPATH, value='//*[@id="site-map"]/div[2]/div/ul/li[3]/a')
 # print(bug_link.text)
 
+# List of pythin.org events
+event_dates = driver.find_elements(By.CSS_SELECTOR, '.event-widget time')
+for date in event_dates:
+    print(date.text)
+
+event_names = driver.find_elements(By.CSS_SELECTOR, '.event-widget a')
+for name in event_names:
+    print(name.text)
 
 driver.quit()
 
