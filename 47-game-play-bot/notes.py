@@ -36,12 +36,21 @@ driver.get(python_org)
 
 # List of pythin.org events
 event_dates = driver.find_elements(By.CSS_SELECTOR, '.event-widget time')
-for date in event_dates:
-    print(date.text)
+# for date in event_dates:
+#     print(date.text)
 
-event_names = driver.find_elements(By.CSS_SELECTOR, '.event-widget a')
-for name in event_names:
-    print(name.text)
+event_names = driver.find_elements(By.CSS_SELECTOR, '.event-widget li a')
+# for name in event_names:
+#     print(name.text)
+
+event_dict = {}
+for n in range(len(event_dates)):
+    event_dict[n] = {
+        "time": event_dates[n].text,
+        "name": event_names[n].text,
+    }
+
+print(event_dict)
 
 driver.quit()
 
