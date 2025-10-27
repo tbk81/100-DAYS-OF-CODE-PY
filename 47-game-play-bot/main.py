@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from time import sleep, time
 
-# Set up web driver
+# Set up a web driver
 endpoint = 'https://ozh.github.io/cookieclicker/'
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("detach", True)
@@ -44,10 +44,10 @@ while True:
     # Every 5 seconds, try to buy the most expensive item we can afford
     if time() > timeout:
         try:
-            # Get current cookie count
+            # Get the current cookie count
             cookies_element = driver.find_element(by=By.ID, value="cookies")
             cookie_text = cookies_element.text
-            # Extract number from text like "123 cookies"
+            # Extract a number from text like "123 cookies"
             cookie_count = int(cookie_text.split()[0].replace(",", ""))
 
             # Find all available products in the store
@@ -55,8 +55,8 @@ while True:
 
             # Find the most expensive item we can afford
             best_item = None
-            for product in reversed(products):  # Start from most expensive (bottom of list)
-                # Check if item is available and affordable (enabled class)
+            for product in reversed(products):  # Start from the most expensive (bottom of the list)
+                # Check if an item is available and affordable (enabled class)
                 if "enabled" in product.get_attribute("class"):
                     best_item = product
                     break
