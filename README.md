@@ -34,4 +34,6 @@
 
 46 - beautiful soup, spotipy API
 
-47 - Selenium web driver, using selectors, dict comprehension
+47 - Selenium web driver, using selectors, dict comprehension, try, timers
+
+48 - 
