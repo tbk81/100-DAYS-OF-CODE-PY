@@ -38,3 +38,7 @@ submit_button.click()
 # Wait for the schedule page to load
 wait.until(ec.presence_of_element_located((By.ID, "schedule-page")))
 
+class_titles = driver.find_elements(By.CSS_SELECTOR, "h2")
+
+for class_ in class_titles:
+    print(class_.text)
