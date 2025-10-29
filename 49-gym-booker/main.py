@@ -38,7 +38,19 @@ submit_button.click()
 # Wait for the schedule page to load
 wait.until(ec.presence_of_element_located((By.ID, "schedule-page")))
 
-class_titles = driver.find_elements(By.CSS_SELECTOR, "h2")
+class_titles = driver.find_elements(By.CSS_SELECTOR, "h3")
+class_times = driver.find_elements(By.CSS_SELECTOR, "p[id^='class-time-']")
+print(len(class_titles))
+print(len(class_times))
 
-for class_ in class_titles:
-    print(class_.text)
+# for title in class_titles:
+#     print(title.text)
+#
+# for time in class_times:
+#     print(time.text)
+
+
+
+# ==================== NOTES AND DEV ==================== #
+# p → Match a <p> (paragraph) element.
+# [id^='class-time-'] → Match only if its id starts with "class-time-".
