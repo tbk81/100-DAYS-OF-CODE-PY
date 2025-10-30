@@ -41,6 +41,7 @@ wait.until(ec.presence_of_element_located((By.ID, "schedule-page")))
 book_num = 0
 waitlist_num = 0
 already_booked_waitlisted = 0
+processed_classes = []
 
 # Find all class cards
 class_cards = driver.find_elements(By.CSS_SELECTOR, "div[id^='class-card-']")
