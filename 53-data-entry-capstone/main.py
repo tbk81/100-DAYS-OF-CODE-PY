@@ -21,17 +21,17 @@ with open('website.html') as f:
 soup = BeautifulSoup(data, 'html.parser')
 
 # Find and list addresses
-# addresses = soup.find_all(name='address')
-# addr_li = [addr.get_text().replace(" | ", " ").strip() for addr in addresses]
+addresses = soup.find_all(name='address')
+addr_li = [addr.get_text().replace(" | ", " ").strip() for addr in addresses]
 
 # Find and list addresses
-# prices = soup.select(".StyledPropertyCardDataWrapper span")
-# price_li = [price.get_text().replace("/mo", "").split("+")[0] for price in prices]
+prices = soup.select(".StyledPropertyCardDataWrapper span")
+price_li = [price.get_text().replace("/mo", "").split("+")[0] for price in prices]
 
 # Find and link all links
 links = soup.select(".StyledPropertyCardDataWrapper a")
 link_li = [link['href'] for link in links]
-print(link_li)
+
 
 
 
