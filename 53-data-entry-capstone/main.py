@@ -22,5 +22,5 @@ soup = BeautifulSoup(data, 'html.parser')
 
 addresses = soup.find_all(name='address')
 for addr in addresses:
-    print(addr.text.strip().replace("| ", ",").split(",")[1:])
+    print(addr.text.strip().replace("| ", ",").split(",")[1:]) #
 
