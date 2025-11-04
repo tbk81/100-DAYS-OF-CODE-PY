@@ -49,9 +49,14 @@ driver.get(GOOGLE_FORM)
 # Log into website
 wait = WebDriverWait(driver, 2)
 
-pw_input = wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "whsOnd zHQkBf")))
-pw_input.send_keys(addr_li[0])
+address_input = wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "whsOnd.zHQkBf")))
+address_input.send_keys(addr_li[0])
 
+# price_input = wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "whsOnd zHQkBf")))
+# pw_input.send_keys(price_li[0])
+#
+# link_input = wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "whsOnd.zHQkBf")))
+# pw_input.send_keys(link_li[0])
 
 # ==================================== TESTING AND DEV ==================================== #
 
