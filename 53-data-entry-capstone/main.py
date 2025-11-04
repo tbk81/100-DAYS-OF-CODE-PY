@@ -49,7 +49,7 @@ driver.get(GOOGLE_FORM)
 # Log into website
 wait = WebDriverWait(driver, 2)
 
-address_input = wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "whsOnd.zHQkBf")))
+address_input = wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, "input[type='text']")))
 address_input.send_keys(addr_li[0])
 
 # price_input = wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "whsOnd zHQkBf")))
@@ -67,4 +67,12 @@ address_input.send_keys(addr_li[0])
     # print(addr.get_text().replace(" | ", " ").strip())
 # li = [addr.get_text().strip().replace("| ", ",").split(",")[1:] for addr in addresses]
 
+
+# <input type="text" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="off"
+# tabindex="0" aria-labelledby="i6 i9" aria-describedby="i7 i8" aria-disabled="false"
+# dir="auto" data-initial-dir="auto" data-initial-value="">
+
+# <input type="text" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="off"
+# tabindex="0" aria-labelledby="i1 i4" aria-describedby="i2 i3" aria-disabled="false"
+# dir="auto" data-initial-dir="auto" data-initial-value="747 Geary Street, 747 Geary St, Oakland, CA 94609" badinput="false">
 
