@@ -38,4 +38,7 @@
 
 48 - Selenium web driver, using selectors, dict comprehension, try, timers
 
-49 - 
+49 - Selenium intermediate
+
+53 - More selenium and beautiful soup. using bs4 to create lists of elements to then use
+Selenium input fields and click on links. 
