@@ -2,8 +2,6 @@ import os
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.common.exceptions import ElementClickInterceptedException
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
@@ -47,29 +45,20 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get(GOOGLE_FORM)
 
 # Log into website
-wait = WebDriverWait(driver, 2)
+wait = WebDriverWait(driver, 20)
 
-# address_input = wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, "input[type='text']")))
-# address_input.send_keys(addr_li[0])
-wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, "input[type='text']")))
-form_inputs = driver.find_elements(By.CSS_SELECTOR, "input[type='text']")
-# form_inputs[0].send_keys(addr_li[0])
+for i in range(len(addr_li)):
+    wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, "input[type='text']")))
+    form_inputs = driver.find_elements(By.CSS_SELECTOR, "input[type='text']")
+    form_inputs[0].send_keys(addr_li[i])
+    form_inputs[1].send_keys(price_li[i])
+    form_inputs[2].send_keys(link_li[i])
+    submit_button = driver.find_element(By.CSS_SELECTOR, "div[role='button']")
+    submit_button.click()
+    # Use xpath to avoid stale element error
+    another_response = wait.until(ec.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/div[1]/div/div[4]/a')))
+    another_response.click()
 
-submit_button = driver.find_element(By.CSS_SELECTOR, "div[role='button']")
-# submit_button.click()
-
-# for i in range(len(form_inputs)):
-#     form_inputs[i].send_keys(addr_li[0])
-#     form_inputs[i].send_keys(price_li[0])
-#     form_inputs[i].send_keys(link_li[0])
-
-form_inputs[0].send_keys(addr_li[0])
-form_inputs[1].send_keys(price_li[0])
-form_inputs[2].send_keys(link_li[0])
-submit_button.click()
-wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, "a[href=https]")))
-another_response = driver.find_element(By.CSS_SELECTOR, "a[href=https]")
-another_response.click()
 
 
 # ==================================== TESTING AND DEV ==================================== #
@@ -81,6 +70,10 @@ another_response.click()
     # print(addr.get_text().replace(" | ", " ").strip())
 # li = [addr.get_text().strip().replace("| ", ",").split(",")[1:] for addr in addresses]
 
+# wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, "a[href]")))
+# another_response = wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, "a[href]")))
+# another_response = wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, "a[href]")))
+# another_response = driver.find_element(By.CSS_SELECTOR, "a[href]")
 
 # <input type="text" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="off"
 # tabindex="0" aria-labelledby="i6 i9" aria-describedby="i7 i8" aria-disabled="false"
