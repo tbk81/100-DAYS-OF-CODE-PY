@@ -58,13 +58,18 @@ form_inputs = driver.find_elements(By.CSS_SELECTOR, "input[type='text']")
 submit_button = driver.find_element(By.CSS_SELECTOR, "div[role='button']")
 # submit_button.click()
 
-for listing in range(2):
-    for i in range(len(form_inputs)):
-        form_inputs[i].send_keys(addr_li[listing])
-        form_inputs[i].send_keys(price_li[listing])
-        form_inputs[i].send_keys(link_li[listing])
-    submit_button.click()
+# for i in range(len(form_inputs)):
+#     form_inputs[i].send_keys(addr_li[0])
+#     form_inputs[i].send_keys(price_li[0])
+#     form_inputs[i].send_keys(link_li[0])
 
+form_inputs[0].send_keys(addr_li[0])
+form_inputs[1].send_keys(price_li[0])
+form_inputs[2].send_keys(link_li[0])
+submit_button.click()
+wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, "a[href=https]")))
+another_response = driver.find_element(By.CSS_SELECTOR, "a[href=https]")
+another_response.click()
 
 
 # ==================================== TESTING AND DEV ==================================== #
