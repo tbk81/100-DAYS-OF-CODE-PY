@@ -10,6 +10,11 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
+@app.route("/bye")
+def say_bye():
+    return "bye"
+
+
 # Used to run a script from the file
-if __main__ == "__main__":
+if __name__ == "__main__":
     app.run()
