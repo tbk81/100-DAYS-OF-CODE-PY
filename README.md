@@ -41,4 +41,6 @@
 49 - Selenium intermediate
 
 53 - More selenium and beautiful soup. using bs4 to create lists of elements to then use
-Selenium input fields and click on links. 
+Selenium input fields and click on links.
+
+54 - Flask, web server, decorators
