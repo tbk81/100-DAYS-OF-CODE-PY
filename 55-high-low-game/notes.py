@@ -71,3 +71,21 @@ if __name__ == "__main__":
 # new_user = User("angela")
 # new_user.is_logged_in = True
 
+
+# Create the logging_decorator() function
+# def logging_decorator(func):
+#     def wrapper(*args):
+#         print(f"You called {func.__name__}{args}")
+#         result = func(*args)
+#         print(f"it returned {result}")
+#         return result
+#
+#     return wrapper
+#
+#
+# @logging_decorator
+# def a_function(*args):
+#     return sum(args)
+#
+#
+# a_function(1, 2, 3)
