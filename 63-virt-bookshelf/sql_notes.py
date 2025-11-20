@@ -39,13 +39,13 @@ class Book(db.Model):
         return f'<Book {self.title}>'
 
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
-# with app.app_context():
-#     new_book = Book(id=1, title="Book 1", author="Author 1", rating=5.3)
-#     db.session.add(new_book)
-#     db.session.commit()
+with app.app_context():
+    new_book = Book(title="Book 1", author="Author 1", rating=5.3)
+    db.session.add(new_book)
+    db.session.commit()
 
 with app.app_context():
     new_book = Book(title="Book 2", author="Author 2", rating=8.9)
@@ -53,30 +53,31 @@ with app.app_context():
     db.session.commit()
 
 # Read all records
-with app.app_context():
-    result = db.session.execute(db.select(Book).order_by(Book.title))
-    all_books = result.scalars()
+# with app.app_context():
+#     result = db.session.execute(db.select(Book).order_by(Book.title))
+#     all_books = result.scalars()
+# print(all_books)
 
 # Read A Particular Record By Query
-with app.app_context():
-    book = db.session.execute(db.select(Book).where(Book.title == "Book 1")).scalar()
+# with app.app_context():
+#     book = db.session.execute(db.select(Book).where(Book.title == "Book 1")).scalar()
 
 # Update A Particular Record By Query
-with app.app_context():
-    book_to_update = db.session.execute(db.select(Book).where(Book.title == "Book 1")).scalar()
-    book_to_update.title = "Book 1: The Full Title"
-    db.session.commit()
+# with app.app_context():
+#     book_to_update = db.session.execute(db.select(Book).where(Book.title == "Book 1")).scalar()
+#     book_to_update.title = "Book 1: The Full Title"
+#     db.session.commit()
 
 # Update A Record By PRIMARY KEY
-book_id = 1
-with app.app_context():
-    book_to_update = db.session.execute(db.select(Book).where(Book.id == book_id)).scalar()
-    # or book_to_update = db.get_or_404(Book, book_id)
-    book_to_update.title = "Book 1: The Full Title"
-    db.session.commit()
+# book_id = 1
+# with app.app_context():
+#     book_to_update = db.session.execute(db.select(Book).where(Book.id == book_id)).scalar()
+#     # or book_to_update = db.get_or_404(Book, book_id)
+#     book_to_update.title = "Book 2: The Full Title"
+#     db.session.commit()
 
 # Delete A Particular Record By PRIMARY KEY
-book_id = 1
+book_id = 4
 with app.app_context():
     book_to_delete = db.session.execute(db.select(Book).where(Book.id == book_id)).scalar()
     # or book_to_delete = db.get_or_404(Book, book_id)
