@@ -32,23 +32,44 @@ class Book(db.Model):
 
 @app.route('/')
 def home():
+    ##READ ALL RECORDS
+    # Construct a query to select from the database. Returns the rows in the database
+    result = db.session.execute(db.select(Book).order_by(Book.title))
+    # Use .scalars() to get the elements rather than entire rows from the database
+    all_books = result.scalars().all()
     return render_template('index.html', all_books=all_books)
 
 
 @app.route("/add", methods=['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        new_book = {
-            "title": request.form["title"],
-            "author": request.form["author"],
-            "rating": request.form["rating"],
-        }
-        all_books.append(new_book)
+        with app.app_context():
+            new_book = Book(title=request.form["title"], author=request.form["author"], rating=request.form["rating"])
+            db.session.add(new_book)
+            db.session.commit()
         return redirect(url_for('home'))
     return render_template('add.html')
 
 
-print(all_books)
-
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+# ---------------------------------------------- TESTING ---------------------------------------------- #
+
+# @app.route("/add", methods=['GET', 'POST'])
+# def add():
+#     if request.method == 'POST':
+#         new_book = {
+#             "title": request.form["title"],
+#             "author": request.form["author"],
+#             "rating": request.form["rating"],
+#         }
+#         all_books.append(new_book)
+#         return redirect(url_for('home'))
+#     return render_template('add.html')
+
+
+
+
