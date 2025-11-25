@@ -48,7 +48,9 @@ with app.app_context():
 # new_movie = Movie(
 #     title="Phone Booth",
 #     year=2002,
-#     description="Publicist Stuart Shepard finds himself trapped in a phone booth, pinned down by an extortionist's sniper rifle. Unable to leave or receive outside help, Stuart's negotiation with the caller leads to a jaw-dropping climax.",
+#     description="Publicist Stuart Shepard finds himself trapped in a phone booth, pinned down by an
+#     extortionist's sniper rifle. Unable to leave or receive outside help, Stuart's negotiation with
+#     the caller leads to a jaw-dropping climax.",
 #     rating=7.3,
 #     ranking=10,
 #     review="My favourite character was the caller.",
@@ -77,7 +79,11 @@ with app.app_context():
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    # Construct a query to select from the database. Returns the rows in the database
+    result = db.session.execute(db.select(Movie).order_by(Movie.title))
+    # Use .scalars() to get the elements rather than entire rows from the database
+    all_movies = result.scalars().all()
+    return render_template("index.html", all_movies=all_movies)
 
 
 if __name__ == '__main__':
