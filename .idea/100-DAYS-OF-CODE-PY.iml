@@ -2,7 +2,49 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/01-Band-Name-Generator/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/01-Band-Name-Generator/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/01-Band-Name-Generator/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/02-tip-calculator/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/02-tip-calculator/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/02-tip-calculator/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/03-treasure-island/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/03-treasure-island/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/03-treasure-island/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/04-rock-paper-scissors/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/04-rock-paper-scissors/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/04-rock-paper-scissors/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/05-password-generator/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/05-password-generator/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/05-password-generator/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/06-robot-maze/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/06-robot-maze/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/06-robot-maze/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/08-caesar-cipher/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/08-caesar-cipher/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/08-caesar-cipher/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/10-calculator/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/10-calculator/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/10-calculator/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/11-blackjack-game/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/11-blackjack-game/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/11-blackjack-game/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/12-number-guessing-game/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/12-number-guessing-game/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/12-number-guessing-game/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/14-higher-lower-game/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/14-higher-lower-game/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/14-higher-lower-game/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/16-coffee-machine-OOP/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/16-coffee-machine-OOP/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/16-coffee-machine-OOP/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/18-hirst-painter/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/18-hirst-painter/.venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/18-hirst-painter/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/49-gym-booker/chrome_profile" />
+      <excludeFolder url="file://$MODULE_DIR$/71-blog-publish/instance" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.13 virtualenv at ~/100-DAYS-OF-CODE-PY/.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
