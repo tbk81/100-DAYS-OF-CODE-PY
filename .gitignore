@@ -1,3 +1,5 @@
 .DS_Store
 .cache
 chrome_profile
+.idea
+.vscode
