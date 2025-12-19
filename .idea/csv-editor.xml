@@ -45,6 +45,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/74-lego-pieces/data/colors.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
