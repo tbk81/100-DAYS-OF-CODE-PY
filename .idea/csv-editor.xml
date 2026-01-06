@@ -52,6 +52,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/76-google-play-store/data/apps.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
