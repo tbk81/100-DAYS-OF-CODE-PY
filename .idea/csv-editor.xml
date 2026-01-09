@@ -59,6 +59,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/78-film-budget-revenue/data/cost_revenue_dirty.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
