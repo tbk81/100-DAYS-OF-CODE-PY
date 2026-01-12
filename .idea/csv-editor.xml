@@ -73,6 +73,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/80-handwashing-data/data/annual_deaths_by_clinic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/80-handwashing-data/data/monthly_deaths.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
