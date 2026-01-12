@@ -75,3 +75,13 @@ the pre-built styles and by modifying Matplotlib parameters, Use floor division 
 years to decades, Use Seaborn to superimpose a linear regressions over our data, Make a judgement if our regression is 
 good or bad based on how well the model fits our data and the r-squared metric, Run regressions with scikit-learn and 
 calculate the coefficients.
+
+79 - How to uncover and investigate NaN values, How to convert objects and string data types to numbers, Creating
+donut and bar charts with plotly, Create a rolling average to smooth out time-series data and show a trend, How to use
+.value_counts(), .groupby(), .merge(), .sort_values() and .agg(), Create a Choropleth to display data on a map, Create
+bar charts showing different segments of the data with plotly, Create Sunburst charts with plotly, Use Seaborn's
+.lmplot() and show best-fit lines across multiple categories using the row, hue, and lowess parameters, Understand how
+a different picture emerges when looking at the same data in different ways (e.g., box plots vs a time series analysis),
+See the distribution of our data and visualise descriptive statistics with the help of a histogram in Seaborn.
+
+80 - 
