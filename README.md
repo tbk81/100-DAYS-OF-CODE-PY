@@ -84,4 +84,9 @@ bar charts showing different segments of the data with plotly, Create Sunburst c
 a different picture emerges when looking at the same data in different ways (e.g., box plots vs a time series analysis),
 See the distribution of our data and visualise descriptive statistics with the help of a histogram in Seaborn.
 
-80 - 
+80 - How to use histograms to visualise distributions, How to superimpose histograms on top of each other even when
+the data series have different lengths, How to use a to smooth out kinks in a histogram and visualise a distribution
+with a Kernel Density Estimate (KDE), How to improve a KDE by specifying boundaries on the estimates, How to use scipy
+and test for statistical significance by looking at p-values, How to highlight different parts of a time series chart
+in Matplotib, How to add and configure a Legend in Matplotlib, Use NumPy's .where() function to process elements
+depending on a condition.
