@@ -87,6 +87,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/81-predict-house-prices/data/boston.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
