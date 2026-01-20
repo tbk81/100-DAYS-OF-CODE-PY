@@ -17,17 +17,32 @@ MORSE_CODE_DICT = {
     '(': '-.--.',  ')': '-.--.-'
 }
 
-# print(MORSE_CODE_DICT['A'])
-usr_input = input("Enter your text to translate to Morse Code: ")
-print(usr_input)
-output = []
+# usr_input = input("Enter your text to translate to Morse Code: ")
+# print(usr_input)
+# output = []
+#
+# for char in usr_input:
+#     if char == " ":
+#         output.append(" ")
+#     else:
+#         output.append(MORSE_CODE_DICT[char.upper()])
+# print(output)
 
-for char in usr_input:
-    if char == " ":
-        output.append(" ")
+app_on = True
+while app_on:
+    usr_input = input("Enter your text to translate to Morse Code: ")
+    output = []
+    if usr_input == "exit":
+        app_on = False
     else:
-        output.append(MORSE_CODE_DICT[char.upper()])
-print(output)
+        for char in usr_input.upper():
+            if char == " ":
+                output.append(" ")
+            else:
+                output.append(MORSE_CODE_DICT[char])
+        print(output)
+
+
 # if __name__ == "__main__":
 #
 #     main()
@@ -41,11 +56,10 @@ print(output)
 #
 #     for char in text.upper():
 #         if char == ' ':
-#             morse_output.append('/')  # phân cách từ
+#             morse_output.append('/')
 #         elif char in MORSE_CODE_DICT:
 #             morse_output.append(MORSE_CODE_DICT[char])
 #         else:
-#             # ký tự không hỗ trợ thì bỏ qua
 #             pass
 #
 #     return ' '.join(morse_output)
