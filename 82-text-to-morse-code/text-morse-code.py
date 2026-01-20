@@ -20,10 +20,14 @@ MORSE_CODE_DICT = {
 # print(MORSE_CODE_DICT['A'])
 usr_input = input("Enter your text to translate to Morse Code: ")
 print(usr_input)
+output = []
 
 for char in usr_input:
-    print(MORSE_CODE_DICT[char.upper()])
-
+    if char == " ":
+        output.append(" ")
+    else:
+        output.append(MORSE_CODE_DICT[char.upper()])
+print(output)
 # if __name__ == "__main__":
 #
 #     main()
