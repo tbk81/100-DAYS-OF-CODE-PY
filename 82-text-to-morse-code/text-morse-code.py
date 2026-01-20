@@ -17,17 +17,6 @@ MORSE_CODE_DICT = {
     '(': '-.--.',  ')': '-.--.-'
 }
 
-# usr_input = input("Enter your text to translate to Morse Code: ")
-# print(usr_input)
-# output = []
-#
-# for char in usr_input:
-#     if char == " ":
-#         output.append(" ")
-#     else:
-#         output.append(MORSE_CODE_DICT[char.upper()])
-# print(output)
-
 app_on = True
 while app_on:
     usr_input = input("Enter your text to translate to Morse Code: ")
